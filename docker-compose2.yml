@@ -1,0 +1,32 @@
+version: '3'
+services:
+ 19cd99d4-35cc-4cbc-a893-467943de024b:
+  image: bitcoinnode
+  ports:
+   - 20001:18332
+   - 25001:18333
+  networks:
+   - mybitcoinnetwork
+  deploy:
+   restart_policy:
+     condition: on-failure
+  volumes:
+   - /home/r/BitcoinCompose/info/trade1:/root/.bitcoin
+
+ 74e1a63a-a476-4698-9793-ac81a7c00bb0:
+  image: bitcoinnode
+  ports:
+   - 20002:18332
+   - 25002:18333
+  networks:
+   - mybitcoinnetwork
+  deploy:
+   restart_policy:
+     condition: on-failure
+  volumes:
+   - /home/r/BitcoinCompose/info/trade2:/root/.bitcoin
+
+networks:
+ mybitcoinnetwork:
+  external:
+    name: mybitcoin

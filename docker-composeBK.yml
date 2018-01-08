@@ -1,0 +1,51 @@
+version: '3'
+services:
+ bitcoindev:
+  build: BitcoinDev
+  image: bitcoindev
+ bitcoinClient:
+  build: ClientBaseImage
+  image: bitcoinnode
+ a:
+  build: MasterBaseImage
+  image: bitcoinmnode
+  ports:
+   - 20000:18332
+  networks:
+   - mybitcoinnetwork
+  deploy:
+   restart_policy:
+    condition: on-failure   
+  depends_on:
+  - bitcoindev
+ eb7f06a4-9d76-452c-8f4d-e972c3e602b6:
+  image: bitcoinnode
+  ports:
+   - 20001:18332
+  networks:
+   - mybitcoinnetwork
+  deploy:
+   restart_policy:
+    condition: on-failure
+  depends_on:
+   - a
+  links:
+   - a
+ eb7f06a4-9d76-452c-8f4:
+  image: bitcoinnode
+  ports:
+   - 20002:18332
+  networks:
+   - mybitcoinnetwork
+  deploy:
+   restart_policy:
+    condition: on-failure
+  depends_on:
+   - a
+  links:
+   - a
+networks:
+  mybitcoinnetwork:
+    external:
+      name: mybitcoin
+

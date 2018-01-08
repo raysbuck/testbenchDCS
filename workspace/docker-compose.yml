@@ -1,0 +1,27 @@
+version: '3'
+services:
+ bitcoindev:
+  build: BitcoinDev
+  image: bitcoindev
+ bitcoinClient:
+  build: ClientBaseImage
+  image: bitcoinnode
+ a:
+  build: MasterBaseImage
+  image: bitcoinmnode
+  ports:
+   - 20000:18332
+   - 25000:18333
+  depends_on:
+  - bitcoindev
+  networks:
+   - mybitcoinnetwork
+  deploy:
+   restart_policy:
+     condition: on-failure
+  volumes:
+   - /home/r/BitcoinCompose/workspace/info/trade0:/root/.bitcoin
+networks:
+ mybitcoinnetwork:
+  external:
+    name: mybitcoin
