@@ -1,11 +1,5 @@
 version: '3'
 services:
- bitcoindev:
-  build: BitcoinDev
-  image: bitcoindev
- bitcoinClient:
-  build: ClientBaseImage
-  image: bitcoinnode
  a:
   build: MasterBaseImage
   image: bitcoinmnode
@@ -20,7 +14,7 @@ services:
    restart_policy:
      condition: on-failure
   volumes:
-   - /home/r/BitcoinCompose/workspace/info/trade0:/root/.bitcoin
+   - /home/r/mercy/testbenchDCS/workspace/info/trade0:/root/.bitcoin
 networks:
  mybitcoinnetwork:
   external:

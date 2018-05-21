@@ -23,6 +23,7 @@ RUN apt-get install --yes pkg-config
 RUN apt-get install --yes libdb4.8
 RUN apt-get install --yes libdb4.8++-dev
 RUN apt-get install --yes python-daemon
+RUN apt-get install --yes iputils-ping dnsutils vim libgmp3-dev bind9
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

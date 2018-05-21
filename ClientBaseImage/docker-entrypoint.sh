@@ -16,13 +16,14 @@ read line
  
 echo "create private network"
 
-bitcoind -listen -port=18333 -regtest -daemon -addnode=${line}:18333 -reindex 
+#bitcoind -listen -port=18333 -regtest -daemon -addnode=${line}:18333 -reindex 
+bitcoind -listen -port=18333 -regtest -daemon -reindex
 
 sleep 5
 
 echo "join private network"
-bitcoin-cli -regtest addnode ${line}:18333 add
-#bitcoin-cli -regtest addnode 10.0.2.15:18333 add 
+#bitcoin-cli -regtest addnode ${line}:18333 add
+ 
 python client.py
 
 

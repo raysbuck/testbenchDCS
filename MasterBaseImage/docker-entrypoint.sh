@@ -2,7 +2,8 @@
 
 echo "create private network"
 
-bitcoind -listen -port=18333 -regtest -daemon -server -reindex
+#bitcoind -listen -port=18333 -regtest -daemon -server -reindex
+
 
 while :
 do
